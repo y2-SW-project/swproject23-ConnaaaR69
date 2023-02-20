@@ -1,49 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    @vite(['resources/js/app.js'])
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <title>Brew Brothers - Craft Ale Brewery</title>
 </head>
 
 <body>
     <!-- Nav -->
-    <nav class="navbar navbar-expand-lg bg-dark bg-opacity-75">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand fs-4 text-primary" href="index.html">
-                <img src="/images/BBLogo.png" alt="Bootstrap" width="30" />
-                Brew Brothers</a>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                <ul class="navbar-nav me-auto m-2 m-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link fs-5" aria-current="page" href="contact.html">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary-alt fs-5 disabled">Shop - Coming Soon</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <x-nav> </x-nav>
     <!-- Nav End -->
     <!-- hero start -->
     <div class="bg d-flex flex-column justify-content-center min-vh-100 navpos">
@@ -52,7 +24,9 @@
                 Brew Brothers Craft Brewery
             </h1>
 
-            <p class="lead pb-3">Small batch brewing in the heart of Wexford</p>
+            <p class="lead pb-3">
+                Small batch brewing in the heart of Wexford
+            </p>
         </div>
     </div>
     <!-- hero end -->
@@ -61,20 +35,23 @@
             <div class="col-md-6 d-flex flex-column justify-content-center">
                 <h3>The Experience!</h3>
                 <p>
-                    We created Brew Brothers to bring high quality small batch brewing
-                    to everybody in Gorey. Giving people the choice between average,
-                    mass produced supermarket products or fresh, flavoursome, quality
-                    ale brewed on their doorstep!
+                    We created Brew Brothers to bring high quality small
+                    batch brewing to everybody in Gorey. Giving people the
+                    choice between average, mass produced supermarket
+                    products or fresh, flavoursome, quality ale brewed on
+                    their doorstep!
                 </p>
                 <p>
-                    Brew Brothers is a local, family run business that doesn't accept
-                    anything mediocre. We only drink the high quality beers we produce
-                    because we cant find anything else to match it locally.
+                    Brew Brothers is a local, family run business that
+                    doesn't accept anything mediocre. We only drink the high
+                    quality beers we produce because we cant find anything
+                    else to match it locally.
                 </p>
 
                 <p>
-                    Visit us at the brewery, meet the brewers, see the brewing process
-                    happening & visit our shop to take home our full range of beers.
+                    Visit us at the brewery, meet the brewers, see the
+                    brewing process happening & visit our shop to take home
+                    our full range of beers.
                 </p>
             </div>
             <!-- spacer col -->
@@ -124,27 +101,31 @@
                 <div class="col-md-6 text-light">
                     <h3>What Is Craft Beer?</h3>
                     <p>
-                        Craft beers are generally different from other drinks on the
-                        market due to levels of innovation. Its all about distinctive
-                        flavors, exciting twists on historic recipes, & even getting
-                        involved in local communities through sponsorship or product
+                        Craft beers are generally different from other
+                        drinks on the market due to levels of innovation.
+                        Its all about distinctive flavors, exciting twists
+                        on historic recipes, & even getting involved in
+                        local communities through sponsorship or product
                         donation.
                     </p>
                     <p>
-                        Craft beer tends to have a richer flavor & a more distinctive
-                        taste compared to more ubiquitous beers. Take in that sweet, sweet
-                        aroma too & you know your on to a good thing!
+                        Craft beer tends to have a richer flavor & a more
+                        distinctive taste compared to more ubiquitous beers.
+                        Take in that sweet, sweet aroma too & you know your
+                        on to a good thing!
                     </p>
                     <p>
-                        The taste & smell is nurtured through raw ingredients, brewing
-                        process, correct serving style & type of craft beer. Customers
-                        will usually expect their beer to come with a foam head, so
-                        correct pouring is a must to ensure a quality finish.
+                        The taste & smell is nurtured through raw
+                        ingredients, brewing process, correct serving style
+                        & type of craft beer. Customers will usually expect
+                        their beer to come with a foam head, so correct
+                        pouring is a must to ensure a quality finish.
                     </p>
                     <p>
-                        Simply put, craft brewing is the process of making a delicious
-                        craft beer. This involves meeting certain standards of quality,
-                        including the use of traditional ingredients.
+                        Simply put, craft brewing is the process of making a
+                        delicious craft beer. This involves meeting certain
+                        standards of quality, including the use of
+                        traditional ingredients.
                     </p>
                 </div>
             </div>
@@ -156,19 +137,22 @@
                 <h3 class="sub">About Us.</h3>
                 <div class="lead fw-semibold">Where it started.</div>
                 <p>
-                    Brew Brothers was established in 2020 by two friends in a purpose
-                    built brew shed. During the uncertain times of the Covid lockdown &
-                    finding a lot of free times on their hands they invested in
-                    commercial brewing equipment to produce something special.
+                    Brew Brothers was established in 2020 by two friends in
+                    a purpose built brew shed. During the uncertain times of
+                    the Covid lockdown & finding a lot of free times on
+                    their hands they invested in commercial brewing
+                    equipment to produce something special.
                 </p>
                 <p>
-                    Taking their combined knowledge of beer making they refined &
-                    perfected four classic ale recipes. Achieving a core range that
-                    would suit a wide range of customers & their particular tastes.
+                    Taking their combined knowledge of beer making they
+                    refined & perfected four classic ale recipes. Achieving
+                    a core range that would suit a wide range of customers &
+                    their particular tastes.
                 </p>
                 <p>
-                    Choose from a light refreshing pale ale, a hoppy dark pale ale, a
-                    classic red ale or our satisfying chocolate & coffee Irish stout.
+                    Choose from a light refreshing pale ale, a hoppy dark
+                    pale ale, a classic red ale or our satisfying chocolate
+                    & coffee Irish stout.
                 </p>
             </div>
             <div class="col-md-6">
@@ -203,16 +187,21 @@
                             <li class="nav-item mb-2 d-flex gap-2">
                                 <i class="bi bi-pin-map-fill"></i>
                                 <p class="p-0 text-muted">
-                                    Craig Carraig, Ballytegan Rd, Gorey, Wexford Y25T8N8
+                                    Craig Carraig, Ballytegan Rd, Gorey,
+                                    Wexford Y25T8N8
                                 </p>
                             </li>
                             <li class="nav-item mb-2 d-flex gap-2">
                                 <i class="bi bi-telephone-fill"></i>
-                                <p class="p-0 text-muted">+353 (0)86 173 4703</p>
+                                <p class="p-0 text-muted">
+                                    +353 (0)86 173 4703
+                                </p>
                             </li>
                             <li class="nav-item mb-2 d-flex gap-2">
                                 <i class="bi bi-envelope-fill"></i>
-                                <p class="p-0 text-muted">info@brewbrothers.ie</p>
+                                <p class="p-0 text-muted">
+                                    info@brewbrothers.ie
+                                </p>
                             </li>
                         </ul>
                     </div>

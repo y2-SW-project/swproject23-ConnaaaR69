@@ -1,8 +1,92 @@
-// Fonts
-@import url("https://fonts.bunny.net/css?family=Nunito");
-
 // Variables
 @import "variables";
 
 // Bootstrap
-@import "../../node_modules/bootstrap/scss/bootstrap";
+// @import "../../../../../../node_modules/bootstrap/scss/bootstrap.scss";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,900&display=swap");
+
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+@import "../../node_modules/bootstrap/scss/navbar";
+@import "../../node_modules/bootstrap/scss/nav";
+@import "../../node_modules/bootstrap/scss/carousel";
+@import "../../node_modules/bootstrap/scss/forms/form-control";
+
+// color vars
+$primary: #eeaa6d;
+$secondary: #f2d3b8;
+$secondary-alt: #706255;
+$light: #f6f9ff;
+$dark: #1e1e24;
+
+// font vars
+$font-family-base: Poppins, sans-serif;
+$display-font-weight: 500;
+//carousel vars
+$carousel-indicator-opacity: 0.75;
+//form vars
+$input-focus-box-shadow: 0 0 0 0.25rem #eeaa6d;
+$input-focus-border-color: $dark;
+// nav vars
+$navbar-light-color: $primary;
+$navbar-light-hover-color: $light;
+// maps
+$cust-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "secondary-alt": $secondary-alt,
+    "dark": $dark,
+    "light": $light,
+) !default;
+
+// my Classes
+h3 {
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+
+    &:after {
+        content: "";
+        display: block;
+        width: 55%; /* Change this to whatever width you want. */
+        border-bottom: 4px solid $primary;
+    }
+}
+h1 {
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+}
+.contactTitle {
+    &:after {
+        content: "";
+        display: block;
+        width: 55%; /* Change this to whatever width you want. */
+        border-bottom: 4px solid $primary;
+    }
+}
+.navHover {
+    text-decoration: none;
+    color: $primary;
+    &:hover {
+        color: $light;
+    }
+}
+
+.bg {
+    background: url(../images/hero.jpg) center/cover no-repeat;
+    background-color: #323232;
+    background-blend-mode: overlay;
+}
+// map merges
+$theme-colors: map-merge($theme-colors, $cust-colors);
+$theme-colors: map-remove(
+    $theme-colors,
+    "secondary-light",
+    "danger",
+    "success",
+    "info",
+    "warning"
+);
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
