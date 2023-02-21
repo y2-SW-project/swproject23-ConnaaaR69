@@ -11,7 +11,6 @@ class productController extends Controller
     // -- Pages -- //
     public function index()
     {
-        $products = Product::latest('updated_at')->simplePaginate(12);
-        return view('user.products.index')->with('products', $products);
+        return view('user.products.index');
     }
 }

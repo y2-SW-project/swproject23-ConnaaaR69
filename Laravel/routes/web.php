@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\productController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/', productController::class)->names('user.index');
+Route::resource('/store', productController::class)->names('user.products.index');
+Route::resource('/', HomeController::class)->names('static.index');
 
 // Route::get('/', function () {
 //     return view('welcome');

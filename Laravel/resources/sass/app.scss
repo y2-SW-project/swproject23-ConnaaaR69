@@ -78,6 +78,11 @@ h1 {
     background-color: #323232;
     background-blend-mode: overlay;
 }
+.bgStore {
+    background: url("../images/beerClose.jpg") center/cover no-repeat;
+    background-color: #323232;
+    background-blend-mode: overlay;
+}
 // map merges
 $theme-colors: map-merge($theme-colors, $cust-colors);
 $theme-colors: map-remove(

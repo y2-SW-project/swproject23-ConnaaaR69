@@ -6,7 +6,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand fs-4 text-primary" href="index.html">
-                <img src="/images/BBLogo.png" alt="Bootstrap" width="30" />
+                <img src="/images/home/BBLogo.png" alt="Bootstrap" width="30" />
                 Brew Brothers</a>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav me-auto m-2 m-lg-0">
