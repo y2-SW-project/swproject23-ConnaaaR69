@@ -41,6 +41,13 @@ $cust-colors: (
     "light": $light,
 ) !default;
 
+//pagination
+$pagination-color: $primary;
+$pagination-bg: $dark;
+$pagination-border-radius: 5px;
+$pagination-hover-color: $dark;
+$pagination-hover-bg: $primary;
+
 // my Classes
 h3 {
     padding-top: 0.5rem;

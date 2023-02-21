@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/store', productController::class)->names('user.products.index');
-Route::resource('/', HomeController::class)->names('static.index');
+Route::resource('/store', productController::class)->names('user.products');
+Route::get('/', [HomeController::class, 'index'])->name('static.index');
 
 // Route::get('/', function () {
 //     return view('welcome');

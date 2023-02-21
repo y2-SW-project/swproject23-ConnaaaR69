@@ -16,8 +16,12 @@
 <body>
     <!-- Nav -->
     <x-nav> </x-nav>
+
+
     <!-- Nav End -->
+
     {{ $slot }}
+
     <x-footer></x-footer>
 </body>
 

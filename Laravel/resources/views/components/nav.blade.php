@@ -5,7 +5,7 @@
                 aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand fs-4 text-primary" href="index.html">
+            <a class="navbar-brand fs-4 text-primary" href="{{ route('static.index') }}">
                 <img src="/images/home/BBLogo.png" alt="Bootstrap" width="30" />
                 Brew Brothers</a>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -14,7 +14,7 @@
                         <a class="nav-link fs-5" aria-current="page" href="contact.html">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-secondary-alt fs-5 disabled">Shop - Coming Soon</a>
+                        <a class="nav-link text-primary fs-5" href="{{ route('user.products.index') }}">Shop</a>
                     </li>
                 </ul>
             </div>

@@ -11,6 +11,7 @@ class productController extends Controller
     // -- Pages -- //
     public function index()
     {
-        return view('user.products.index');
+        $products = Product::orderBy('price', 'DESC')->simplePaginate(6);
+        return view('user.products.index')->with('products', $products);
     }
 }
