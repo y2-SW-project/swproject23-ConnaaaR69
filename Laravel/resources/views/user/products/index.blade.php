@@ -16,18 +16,30 @@
     </div>
     <div class="container-lg min-vh-100 " id="store">
         <div class="row">
+            <div class="col-md-12">
+                <form type='get' action="{{ route('/search') }}" class="input-group mb-3">
+                    <input type="search" name='query' class="form-control" placeholder="Search" aria-label="search"
+                        aria-describedby="search-button">
+                    <button class="btn btn-outline-dark" type="submit" id="search-button">Search</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
             @foreach ($products as $product)
                 <div class="col-md-4 my-2">
                     <x-card :product="$product"></x-card>
                 </div>
             @endforeach
         </div>
-        {{-- {{ dd($products) }} --}}
+
+
         <div class="row">
             <div class="col-md-12 .d-flex justify-content-between">
-                {{ $products->fragment('store')->links() }}
+                {{ $products->links() }}
             </div>
         </div>
+
+
 
 
 
@@ -37,4 +49,5 @@
             <p>No Products</p>
         @endunless --}}
     </div>
+
 </x-layout>

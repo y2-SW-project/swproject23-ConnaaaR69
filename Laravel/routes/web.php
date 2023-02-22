@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\User\productController;
 
 /*
@@ -19,11 +18,7 @@ use App\Http\Controllers\User\productController;
 
 Route::resource('/store', productController::class)->names('user.products');
 Route::get('/', [HomeController::class, 'index'])->name('static.index');
-
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/search', [productController::class, 'search'])->name('/search');
 
 Auth::routes();
 

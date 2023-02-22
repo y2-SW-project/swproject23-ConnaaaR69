@@ -1,8 +1,7 @@
-@extends('layouts.app')
-
-@section('content')
+{{-- @extends('layouts.app') --}}
+<x-layout-no-footer>
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row min-vh-100 justify-content-center align-items-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Register') }}</div>
@@ -12,7 +11,8 @@
                             @csrf
 
                             <div class="row mb-3">
-                                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                                <label for="name"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -71,23 +71,27 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-0">
-                                <div class="col-md-6 offset-md-4">
+                            <div class="row mb-0 ">
+                                <div class="col-md-6 offset-md-4 d-flex">
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Register') }}
                                     </button>
+
+                                    <a class="btn btn-link text-muted" href="{{ route('login') }}">
+                                        {{ __('Already Have an Account?') }}
+                                    </a>
                                 </div>
+
                             </div>
 
 
 
                         </form>
-                        <a class="btn btn-link" href="{{ route('login') }}">
-                            {{ __('Already Have an Account?') }}
-                        </a>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-@endsection
+
+</x-layout-no-footer>

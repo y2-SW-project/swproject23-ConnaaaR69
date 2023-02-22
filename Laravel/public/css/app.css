@@ -3150,9 +3150,9 @@ textarea.form-control-lg {
   filter: brightness(90%);
 }
 .form-check-input:focus {
-  border-color: #86b7fe;
+  border-color: #1e1e24;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  box-shadow: #eeaa6d;
 }
 .form-check-input:checked {
   background-color: #eeaa6d;
