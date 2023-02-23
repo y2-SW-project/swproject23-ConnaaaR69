@@ -14,9 +14,9 @@
             </a>
         </div>
     </div>
-    <div class="container-lg min-vh-100 " id="store">
+    <div class="container-lg min-vh-100 mt-3" id="store">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 ">
                 <form type='get' action="{{ route('/search') }}" class="input-group mb-3">
                     <input type="search" name='query' class="form-control" placeholder="Search" aria-label="search"
                         aria-describedby="search-button">
@@ -24,6 +24,7 @@
                 </form>
             </div>
         </div>
+
         <div class="row">
             @foreach ($products as $product)
                 <div class="col-md-4 my-2">
@@ -32,12 +33,14 @@
             @endforeach
         </div>
 
-
-        <div class="row">
-            <div class="col-md-12 .d-flex justify-content-between">
-                {{ $products->links() }}
+        @if ($products->hasPages())
+            <div class="row">
+                <div class="col-md-12 .d-flex justify-content-between">
+                    {{ $products->fragment('store')->links() }}
+                </div>
             </div>
-        </div>
+        @endif
+
 
 
 

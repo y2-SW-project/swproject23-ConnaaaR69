@@ -19,9 +19,9 @@ class productController extends Controller
     public function search()
     {
         $query = $_GET['query'];
-        $products = Product::where('title', 'LIKE', '%' . $query . '%')->get();
-        $scroll = true;
-        dd($scroll);
-        return view('user.products.index')->with('products', $products)->with('scroll', $scroll);
+        $products = Product::where('title', 'LIKE', '%' . $query . '%')->simplePaginate(6);
+
+        // dd($scroll);
+        return view('user.products.index')->with('products', $products);
     }
 }
