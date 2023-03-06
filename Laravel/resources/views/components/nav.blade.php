@@ -17,6 +17,9 @@
                     <li class="nav-item">
                         <a class="nav-link  fs-5" href="{{ route('user.products.index') }}">Shop</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link  fs-5" href="{{ route('admin.index') }}">Admin</a>
+                    </li>
 
 
 

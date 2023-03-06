@@ -17,7 +17,7 @@
     <div class="container-lg min-vh-100 mt-3" id="store">
         <div class="row">
             <div class="col-md-12 ">
-                <form type='get' action="{{ route('/search') }}" class="input-group mb-3">
+                <form type='get' action="{{ route('user.products.search') }}" class="input-group mb-3">
                     <input type="search" name='query' class="form-control" placeholder="Search" aria-label="search"
                         aria-describedby="search-button">
                     <button class="btn btn-outline-dark" type="submit" id="search-button">Search</button>
@@ -33,7 +33,8 @@
             @endforeach
         </div>
 
-        @if ($products->hasPages())
+        @if (route('user.products.store'))
+            {{-- {{ dd($products) }} --}}
             <div class="row">
                 <div class="col-md-12 .d-flex justify-content-between">
                     {{ $products->fragment('store')->links() }}
