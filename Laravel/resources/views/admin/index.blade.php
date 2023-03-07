@@ -31,7 +31,8 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row align-items-center">
+
             <div class="col-md-8 offset-md-2 my-5">
                 <div class="h2">Products</div>
 
@@ -44,6 +45,10 @@
                         <div class="accordion-collapse collapse" id="collapseProducts"
                             data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
+
+                                <a class="btn btn-secondary mt-2" href="{{ route('admin.create') }}"> Add New
+                                    Product</a>
+
                                 @foreach ($products as $product)
                                     <div class="col-md-8 offset-md-2 my-2">
                                         <div class="card">
@@ -62,10 +67,7 @@
                     </div>
                 </div>
             </div>
-            <button> Add New Product</button>
+
         </div>
     </div>
-
-
-
 </x-layout-no-footer>
