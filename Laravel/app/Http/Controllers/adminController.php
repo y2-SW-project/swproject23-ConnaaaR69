@@ -22,7 +22,7 @@ class adminController extends Controller
 
     public function create()
     {
-        $user = Auth::user();
+        Auth::user();
         return view('admin.create');
     }
 
@@ -44,7 +44,7 @@ class adminController extends Controller
         $image->move('images', $timestampFile);
 
         Product::create([
-            'user_id' => Auth::id(),
+            // 'user_id' => Auth::id(),
             'uuid' => Str::uuid(),
             'title' => $request->title,
             'tags' => $request->tags,
@@ -52,5 +52,7 @@ class adminController extends Controller
             'image' => $timestampFile,
             'price' => $request->price
         ]);
+
+        return to_route('admin.index');
     }
 }
