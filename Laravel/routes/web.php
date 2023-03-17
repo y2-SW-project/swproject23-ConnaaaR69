@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\orderController;
 use App\Http\Controllers\User\productController;
 
 /*
@@ -18,6 +19,8 @@ use App\Http\Controllers\User\productController;
 */
 
 Route::resource('/admin', adminController::class)->middleware(['auth'])->names('admin');
+
+Route::resource('/order', orderController::class)->middleware(['auth'])->names('orders');
 
 Route::resource('/store', productController::class)->names('user.products');
 Route::get('/', [HomeController::class, 'index'])->name('static.index');

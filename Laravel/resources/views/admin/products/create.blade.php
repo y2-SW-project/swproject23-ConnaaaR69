@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <h1>Create a New Product</h1>
-                <form method="POST" action="{{ route('admin.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('user.products.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Product Title</span>
@@ -30,7 +30,7 @@
                         <span class="input-group-text" id="basic-addon1">Description</span>
                         <textarea type="text" name="text" class="form-control" aria-label="Description" aria-describedby="basic-addon1"></textarea>
                     </div>
-                    <button class="btn btn-primary">Submit</button>
+                    <button class="btn btn-primary"> Submit</button>
                 </form>
             </div>
         </div>

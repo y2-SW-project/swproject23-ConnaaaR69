@@ -13,6 +13,8 @@
                         <div class="accordion-collapse collapse" id="collapseOrders"
                             data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
+                                <a class="btn btn-secondary mt-2" href="{{ route('orders.create') }}"> Add New
+                                    Order</a>
                                 @foreach ($orders as $order)
                                     <div class="col-md-8 offset-md-2 my-2">
                                         <div class="card">
@@ -46,7 +48,7 @@
                             data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
 
-                                <a class="btn btn-secondary mt-2" href="{{ route('admin.create') }}"> Add New
+                                <a class="btn btn-secondary mt-2" href="{{ route('user.products.create') }}"> Add New
                                     Product</a>
 
                                 @foreach ($products as $product)
