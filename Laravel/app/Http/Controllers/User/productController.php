@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\Product;
+use Darryldecode\Cart\Cart;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,6 +12,9 @@ use Illuminate\Support\Facades\Auth;
 
 class productController extends Controller
 {
+
+
+
     // -- Pages -- //
     public function index()
     {
@@ -23,6 +27,7 @@ class productController extends Controller
         Auth::user();
         return view('admin.products.create');
     }
+
 
     public function store(Request $request)
     {

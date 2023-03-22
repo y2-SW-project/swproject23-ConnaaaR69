@@ -20,7 +20,20 @@
                     <li class="nav-item">
                         <a class="nav-link  fs-5" href="{{ route('admin.index') }}">Admin</a>
                     </li>
+                    @auth
+                        <li class="nav-item">
+                            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapse" role="button"
+                                aria-expanded="false" aria-controls="collapse">
+                                Cart
+                            </a>
+                            <div class="collapse" id="collapse">
 
+
+                            </div>
+
+
+                        </li>
+                    @endauth
 
 
                 </ul>
@@ -38,6 +51,7 @@
 
 
                 </div>
+
             </div>
 
 

@@ -15,6 +15,10 @@ class Product extends Model
         'updated_at',
     ];
 
+    public function order()
+    {
+        return $this->belongsToMany(Order::class, 'order');
+    }
 
     // Returns project unique id
     public function getRouteKeyName()

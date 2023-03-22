@@ -17,12 +17,14 @@
                                     Order</a>
                                 @foreach ($orders as $order)
                                     <div class="col-md-8 offset-md-2 my-2">
-                                        <div class="card">
+                                        <div class="card relative">
                                             <div class="card-body">
                                                 <p>{{ $order->id }}</p>
                                                 <p>{{ $order->user->name }}</p>
                                                 <p>{{ $order->user->address }}</p>
                                                 <p>{{ $order->uuid }}</p>
+                                                <form action="{{ route() }}"></form>
+
                                             </div>
                                         </div>
                                     </div>

@@ -15,6 +15,11 @@ class Order extends Model
         'updated_at',
     ];
 
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'product');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

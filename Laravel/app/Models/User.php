@@ -46,4 +46,30 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\Models\Role', 'user_role');
+    }
+
+    // checks if the user has the specified role, if not returns 401
+    public function authorizeRoles($roles)
+    {
+        if (is_array($roles)) {
+            return $this->hasAnyRole($roles) || abort(401, 'Not Authorized.');
+        }
+        return $this->hasRole($roles) || abort(401, 'Not Authorized.');
+    }
+
+    //checks if the user has specified role
+    public function hasRole($role)
+    {
+        return null !== $this->roles()->where('name', $role)->first();
+    }
+
+    //checks if user has any role attached
+    public function hasAnyRole($roles)
+    {
+        return null !== $this->roles()->whereIn('name', $roles)->first();
+    }
 }
