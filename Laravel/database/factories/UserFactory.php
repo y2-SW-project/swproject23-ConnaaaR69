@@ -30,9 +30,9 @@ class UserFactory extends Factory
 
     public function configure()
     {
-        return $this->afterCreating(function (User $user) {
+        return $this->afterMaking(function (User $user) {
+        })->afterCreating(function (User $user) {
             $role_user = Role::where('name', 'user')->first();
-
             $user->roles()->attach($role_user);
         });
     }

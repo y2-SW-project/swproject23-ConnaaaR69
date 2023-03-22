@@ -1,4 +1,7 @@
 <div>
+    @php
+        $user = Auth::user();
+    @endphp
     <nav class="navbar navbar-expand-lg bg-dark bg-opacity-75">
         <div class="container-fluid d-flex justify-content-between">
 
@@ -17,9 +20,11 @@
                     <li class="nav-item">
                         <a class="nav-link  fs-5" href="{{ route('user.products.index') }}">Shop</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link  fs-5" href="{{ route('admin.index') }}">Admin</a>
-                    </li>
+                    @auth
+                        <li class="nav-item {{ $user->hasRole('admin') ? '' : 'd-none' }}">
+                            <a class="nav-link fs-5" href="{{ route('admin.index') }}">Admin</a>
+                        </li>
+                    @endauth
                     @auth
                         <li class="nav-item">
                             <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapse" role="button"

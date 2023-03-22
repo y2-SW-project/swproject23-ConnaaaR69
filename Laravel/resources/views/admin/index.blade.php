@@ -16,18 +16,7 @@
                                 <a class="btn btn-secondary mt-2" href="{{ route('orders.create') }}"> Add New
                                     Order</a>
                                 @foreach ($orders as $order)
-                                    <div class="col-md-8 offset-md-2 my-2">
-                                        <div class="card relative">
-                                            <div class="card-body">
-                                                <p>{{ $order->id }}</p>
-                                                <p>{{ $order->user->name }}</p>
-                                                <p>{{ $order->user->address }}</p>
-                                                <p>{{ $order->uuid }}</p>
-                                                <form action="{{ route() }}"></form>
-
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <x-order-card :order="$order"></x-order-card>
                                 @endforeach
                             </div>
                         </div>
@@ -54,17 +43,7 @@
                                     Product</a>
 
                                 @foreach ($products as $product)
-                                    <div class="col-md-8 offset-md-2 my-2">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <p>{{ $product->id }}</p>
-                                                <p>{{ $product->title }}</p>
-                                                <p>€{{ $product->price }}</p>
-                                                <p>{{ $product->text }}</p>
-                                                <p>{{ $product->uuid }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <x-product-card :product="$product"> </x-product-card>
                                 @endforeach
                             </div>
                         </div>

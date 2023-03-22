@@ -15,9 +15,14 @@ class Product extends Model
         'updated_at',
     ];
 
-    public function order()
+    public function orders()
     {
-        return $this->belongsToMany(Order::class, 'order');
+        return $this->belongsToMany(Order::class);
+    }
+
+    public function carts()
+    {
+        return $this->belongsToMany(Cart::class);
     }
 
     // Returns project unique id

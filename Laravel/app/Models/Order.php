@@ -8,26 +8,35 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
-
-    protected $dates = [
-        'created_at',
-        'updated_at',
-    ];
-
-    public function products()
-    {
-        return $this->belongsToMany(Product::class, 'product');
-    }
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    // Returns project unique id
-    public function getRouteKeyName()
+    public function products()
     {
-        return 'uuid';
+        return $this->belongsToMany(Product::class);
+    }
+
+    public function addProduct(Product $product)
+    {
+        $this->products()->attach($product->id);
+    }
+
+    public function removeProduct(Product $product)
+    {
+        $this->products()->detach($product->id);
+    }
+
+    public function total()
+    {
+        $total = 0;
+        foreach ($this->products as $product) {
+            $total += $product->price;
+        }
+        return $total;
     }
 }

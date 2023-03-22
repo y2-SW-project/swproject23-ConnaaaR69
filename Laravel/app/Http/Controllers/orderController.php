@@ -8,14 +8,16 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class orderController extends Controller
 {
     public function create()
     {
-        Auth::user();
+        $u = Auth::user();
+        $u->authorizeRoles('admin');
 
-        $users = User::all()->except(Auth::user()->id);
+        $users = User::all()->except($u->id);
         return view('admin.orders.create')->with('users', $users);
     }
 
@@ -32,5 +34,39 @@ class orderController extends Controller
         ]);
 
         return to_route('admin.index');
+    }
+
+    public function edit(Order $order)
+    {
+        $u = Auth::user();
+        $u->authorizeRoles('admin');
+        $users = User::all()->except($u->id);
+
+
+        return view('admin.orders.edit')->with('order', $order)->with('users', $users);
+    }
+
+    public function update(Order $order, Request $req)
+    {
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+        $req->validate([
+            'user_id' => 'required'
+        ]);
+
+        $order->update([
+            'user_id' => $req->user_id
+        ]);
+        return Redirect::back()->with('msg', 'Order Successfully Updated');
+    }
+
+    public function destroy(Order $order)
+    {
+        $u = Auth::user();
+        $u->authorizeRoles('admin');
+
+        $order->delete();
+        return Redirect::back()->with('msg', 'Order Successfully Deleted');
     }
 }
