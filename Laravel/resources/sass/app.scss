@@ -56,6 +56,20 @@ $form-check-input-checked-bg-color: $primary;
 $form-check-input-focus-box-shadow: $primary;
 $form-check-input-focus-border: $dark;
 
+//tooltips
+$tooltip-bg: $secondary-alt;
+
+//popovers
+$popover-header-bg: $dark;
+$popover-header-color: $light;
+$popover-bg: $secondary-alt;
+
+//lists
+$list-group-bg: $light;
+$list-group-active-bg: $primary;
+$list-group-active-color: $dark;
+$list-group-active-border-color: $dark;
+
 // my Classes
 h3 {
     padding-top: 0.5rem;
@@ -74,13 +88,14 @@ h1 {
 }
 
 .addCartBtn {
-    padding: 5px;
+    border-radius: 99px;
     position: absolute;
-
+    top: 60%;
+    left: 85%;
     display: none;
     margin: 0;
     font-size: 1.5rem;
-    color: $dark;
+    color: $light;
     &:hover {
         color: $secondary;
     }
@@ -88,8 +103,10 @@ h1 {
 
 .cartCounter {
     background-color: $secondary;
+    color: $dark;
+
     position: absolute;
-    top: -18px;
+    top: -20px;
     left: 20px;
 }
 

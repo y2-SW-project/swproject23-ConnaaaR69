@@ -2,7 +2,8 @@
 <div class="card position-relative">
     {{-- {{ route('user.products.show', $product) }} --}}
     @Auth
-        <a class="addCartBtn .d-none .d-md-block" data-product-id="{{ $product->id }}"><i class="bi bi-plus-square  "></i>
+        <a class="addCartBtn rounded-circle .d-none .d-md-block" data-product-id="{{ $product->id }}" data-bs-toggle="tooltip"
+            data-bs-title="Add to Cart"><i class="bi bi-plus-square "></i>
         </a>
     @endauth
     <a href="" class="text-decoration-none">

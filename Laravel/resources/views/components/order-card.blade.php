@@ -6,6 +6,11 @@
             <p>{{ $order->user->name }}</p>
             <p>{{ $order->user->address }}</p>
             <p>{{ $order->uuid }}</p>
+            @foreach ($order->products as $product)
+                <p>
+                    {{ $product->title . ' ' . '€' . $product->price }}
+                </p>
+            @endforeach
             <div class="d-flex gap-1">
                 <form class="absolute left-50" action="{{ route('orders.destroy', $order) }}" method="POST">
                     @csrf

@@ -921,12 +921,14 @@ h1, .h1 {
 }
 
 .addCartBtn {
-  padding: 5px;
+  border-radius: 99px;
   position: absolute;
+  top: 60%;
+  left: 85%;
   display: none;
   margin: 0;
   font-size: 1.5rem;
-  color: #1e1e24;
+  color: #f6f9ff;
 }
 .addCartBtn:hover {
   color: #f2d3b8;
@@ -934,8 +936,9 @@ h1, .h1 {
 
 .cartCounter {
   background-color: #f2d3b8;
+  color: #1e1e24;
   position: absolute;
-  top: -18px;
+  top: -20px;
   left: 20px;
 }
 
@@ -5718,7 +5721,7 @@ textarea.form-control-lg {
 
 .list-group {
   --bs-list-group-color: var(--bs-body-color);
-  --bs-list-group-bg: var(--bs-body-bg);
+  --bs-list-group-bg: #f6f9ff;
   --bs-list-group-border-color: var(--bs-border-color);
   --bs-list-group-border-width: var(--bs-border-width);
   --bs-list-group-border-radius: var(--bs-border-radius);
@@ -5731,9 +5734,9 @@ textarea.form-control-lg {
   --bs-list-group-action-active-bg: var(--bs-secondary-bg);
   --bs-list-group-disabled-color: var(--bs-secondary-color);
   --bs-list-group-disabled-bg: var(--bs-body-bg);
-  --bs-list-group-active-color: #fff;
-  --bs-list-group-active-bg: #0d6efd;
-  --bs-list-group-active-border-color: #0d6efd;
+  --bs-list-group-active-color: #1e1e24;
+  --bs-list-group-active-bg: #eeaa6d;
+  --bs-list-group-active-border-color: #1e1e24;
   display: flex;
   flex-direction: column;
   padding-left: 0;
@@ -6440,7 +6443,7 @@ textarea.form-control-lg {
   --bs-tooltip-margin: ;
   --bs-tooltip-font-size: 0.7875rem;
   --bs-tooltip-color: var(--bs-body-bg);
-  --bs-tooltip-bg: var(--bs-emphasis-color);
+  --bs-tooltip-bg: #706255;
   --bs-tooltip-border-radius: var(--bs-border-radius);
   --bs-tooltip-opacity: 0.9;
   --bs-tooltip-arrow-width: 0.8rem;
@@ -6539,7 +6542,7 @@ textarea.form-control-lg {
   --bs-popover-zindex: 1070;
   --bs-popover-max-width: 276px;
   --bs-popover-font-size: 0.7875rem;
-  --bs-popover-bg: var(--bs-body-bg);
+  --bs-popover-bg: #706255;
   --bs-popover-border-width: var(--bs-border-width);
   --bs-popover-border-color: var(--bs-border-color-translucent);
   --bs-popover-border-radius: var(--bs-border-radius-lg);
@@ -6548,8 +6551,8 @@ textarea.form-control-lg {
   --bs-popover-header-padding-x: 1rem;
   --bs-popover-header-padding-y: 0.5rem;
   --bs-popover-header-font-size: 0.9rem;
-  --bs-popover-header-color: ;
-  --bs-popover-header-bg: var(--bs-secondary-bg);
+  --bs-popover-header-color: #f6f9ff;
+  --bs-popover-header-bg: #1e1e24;
   --bs-popover-body-padding-x: 1rem;
   --bs-popover-body-padding-y: 1rem;
   --bs-popover-body-color: var(--bs-body-color);

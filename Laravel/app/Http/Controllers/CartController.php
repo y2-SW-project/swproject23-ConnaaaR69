@@ -45,15 +45,24 @@ class CartController extends Controller
         return response()->json(['success' => 'Product added to cart', 'cartProduct' => $cartProduct]);
     }
 
-    public function count()
+    public function remove(Request $request)
     {
         $user = Auth::user();
         $cart = $user->cart;
+        //this shouldn't be needed as every user has a cart, but just incase...
         if (!$cart) {
-            return response()->json(['count' => 0]);
+            return response()->json(['error' => 'No cart exists'], 500);
         }
 
-        $count = $cart->products->count();
-        return response()->json(['count' => $count]);
+        //get product from product id
+        $product = Product::find($request->input('product_id'));
+        if (!$product) {
+            return response()->json(['error' => 'Product not found'], 404);
+        }
+
+        CartProduct::delete([
+            'cart_id' => $cart->id,
+            'product_id' => $product->id,
+        ]);
     }
 }

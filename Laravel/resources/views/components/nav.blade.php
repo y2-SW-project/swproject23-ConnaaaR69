@@ -1,5 +1,5 @@
-<div>
-    @php
+@php
+    if (Auth::check()) {
         $countObj = 0;
         $user = Auth::user();
         $cart = $user
@@ -7,10 +7,18 @@
             ->with('cartProducts')
             ->first();
         $cartProducts = $cart->cartProducts;
+        $total = 0;
         foreach ($cartProducts as $cartProduct) {
             $countObj++;
+            $total += $cartProduct->product->price;
         }
-    @endphp
+    }
+    
+@endphp
+<div>
+
+
+
     <nav class="navbar navbar-expand-lg bg-dark bg-opacity-75">
         <div class="container-fluid">
 
@@ -21,8 +29,8 @@
             <a class="navbar-brand fs-4 text-primary" href="{{ route('static.index') }}">
                 <img src="/images/home/BBLogo.png" class="" alt="Bootstrap" width="30" />
                 Brew Brothers</a>
-            <div class="collapse navbar-collapse d-flex justify-content-between navbar-nav" id="navbarTogglerDemo03">
-                <ul class="navbar-nav  my-2 m-lg-0">
+            <div class="collapse navbar-collapse navbar-nav" id="navbarTogglerDemo03">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link fs-5" aria-current="page" href="contact.html">Contact</a>
                     </li>
@@ -36,28 +44,41 @@
                     @endauth
 
                 </ul>
-                <div class="end d-flex gap-4">
+                <div class="d-flex gap-5">
                     @auth
-                        <div class="cart">
-                            <a class="position-relative" data-bs-toggle="popover" data-bs-trigger="hover" title="Cart"
+                        <div class="cart nav-item">
+                            <a class="position-relative" data-bs-toggle="popover" data-bs-trigger="click" title="Cart"
                                 data-bs-content="
-                        @yield('cart-popover')
-                           ">
+                            <ul class='list-group'>
+                              
+                                @foreach ($cartProducts as $product)
+<li class='list-group-item d-flex gap-3'>   
+
+                                        <p> {{ $product->product->title }}</p>
+                                        
+                                        <p> {{ '€' . $product->product->price }}</p>
+                                        <a class='removeCartBtn' href='' data-product-id='{{ $product->id }}' data-bs-toggle='tooltip'
+                                            data-bs-title='Remove from Cart'><i class='bi bi-x-lg'></i>
+                                        </a>
+                                        
+                                </li>
+@endforeach
+                                <li class='list-group-item list-group-item active'>
+                                    <span><strong>Total: </strong>€{{ $total }}</span>
+                                </li>
+                                </ul>
+                                ">
+
+
                                 <i class="bi bi-basket2-fill text-light fs-2"></i>
                                 <span class=" badge rounded-pill cartCounter text-dark">
                                     {{ $countObj }}
                                 </span>
                             </a>
 
-                            <div class="collapse" id="collapse">
-
-
-                            </div>
-
-
                         </div>
                     @endauth
-                    <div class="login">
+                    <div class="login nav-item">
                         @auth
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
@@ -68,16 +89,9 @@
                                 Login/Register
                             </a>
                         @endauth
-
-
                     </div>
-
                 </div>
-
             </div>
-
-
-
         </div>
     </nav>
 </div>

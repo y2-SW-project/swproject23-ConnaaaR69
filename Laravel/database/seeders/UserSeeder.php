@@ -28,6 +28,7 @@ class UserSeeder extends Seeder
         $admin->password = Hash::make('password');
         $admin->save();
         $admin->roles()->attach($role_admin);
+        Cart::factory()->create(['user_id' => $admin->id]);
 
         // Create generic users
         User::factory()->times(10)->hasOrders(2)->create()->each(function ($user) {

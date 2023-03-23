@@ -27,6 +27,10 @@ class productController extends Controller
         return view('user.products.index')->with('products', $products)->with('user', $user);
     }
 
+    public function show()
+    {
+    }
+
     public function create()
     {
         Auth::user();

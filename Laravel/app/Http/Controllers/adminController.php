@@ -21,7 +21,7 @@ class adminController extends Controller
         $cartProducts = $cart->cartProducts;
         foreach ($cartProducts as $cartProduct) {
             $product = $cartProduct->product;
-            echo $product->title;
+            // echo $product->title;
         }
 
         $products = Product::orderBy('updated_at', 'DESC')->get();
