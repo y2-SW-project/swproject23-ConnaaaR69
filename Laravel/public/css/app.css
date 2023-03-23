@@ -923,23 +923,20 @@ h1, .h1 {
 .addCartBtn {
   padding: 5px;
   position: absolute;
-  top: 60%;
-  left: 85%;
   display: none;
   margin: 0;
   font-size: 1.5rem;
-  color: #f6f9ff;
+  color: #1e1e24;
 }
 .addCartBtn:hover {
   color: #f2d3b8;
 }
 
 .cartCounter {
-  background-color: #1e1e24;
-  color: #f6f9ff;
+  background-color: #f2d3b8;
   position: absolute;
-  top: 0%;
-  left: 0%;
+  top: -18px;
+  left: 20px;
 }
 
 .card:hover .addCartBtn {

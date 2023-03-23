@@ -76,25 +76,21 @@ h1 {
 .addCartBtn {
     padding: 5px;
     position: absolute;
-    top: 60%;
-    left: 85%;
+
     display: none;
     margin: 0;
     font-size: 1.5rem;
-    color: $light;
+    color: $dark;
     &:hover {
         color: $secondary;
     }
 }
 
 .cartCounter {
-    background-color: $dark;
-    color: $light;
-
+    background-color: $secondary;
     position: absolute;
-    top: 0%;
-
-    left: 0%;
+    top: -18px;
+    left: 20px;
 }
 
 .card {
