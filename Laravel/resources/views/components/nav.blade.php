@@ -1,6 +1,15 @@
 <div>
     @php
+        $countObj = 0;
         $user = Auth::user();
+        $cart = $user
+            ->cart()
+            ->with('cartProducts')
+            ->first();
+        $cartProducts = $cart->cartProducts;
+        foreach ($cartProducts as $cartProduct) {
+            $countObj++;
+        }
     @endphp
     <nav class="navbar navbar-expand-lg bg-dark bg-opacity-75">
         <div class="container-fluid d-flex justify-content-between">
@@ -27,10 +36,14 @@
                     @endauth
                     @auth
                         <li class="nav-item">
-                            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapse" role="button"
-                                aria-expanded="false" aria-controls="collapse">
+                            <a class="btn btn-primary position-relative" data-bs-toggle="collapse" href="#collapse"
+                                role="button" aria-expanded="false" aria-controls="collapse">
                                 Cart
+                                <span class=" badge rounded-pill cartCounter">
+                                    {{ $countObj }}
+                                </span>
                             </a>
+
                             <div class="collapse" id="collapse">
 
 

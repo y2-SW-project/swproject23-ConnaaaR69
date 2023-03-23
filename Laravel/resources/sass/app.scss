@@ -73,6 +73,37 @@ h1 {
     padding-bottom: 1rem;
 }
 
+.addCartBtn {
+    padding: 5px;
+    position: absolute;
+    top: 60%;
+    left: 85%;
+    display: none;
+    margin: 0;
+    font-size: 1.5rem;
+    color: $light;
+    &:hover {
+        color: $secondary;
+    }
+}
+
+.cartCounter {
+    background-color: $dark;
+    color: $light;
+
+    position: absolute;
+    top: 0%;
+
+    left: 0%;
+}
+
+.card {
+    &:hover {
+        .addCartBtn {
+            display: block;
+        }
+    }
+}
 .contactTitle {
     &:after {
         content: "";

@@ -20,6 +20,9 @@ class productController extends Controller
     public function index()
     {
         $user = Auth::user();
+        // $cart = $user->cart()->with('cartProducts')->first();
+        // $cartProducts = $cart->cartProducts;
+        // dd($cartProducts);
         $products = Product::orderBy('price', 'DESC')->simplePaginate(6);
         return view('user.products.index')->with('products', $products)->with('user', $user);
     }

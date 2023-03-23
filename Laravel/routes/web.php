@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\orderController;
 use App\Http\Controllers\User\productController;
 
@@ -19,6 +20,9 @@ use App\Http\Controllers\User\productController;
 */
 
 Route::resource('/admin', adminController::class)->middleware(['auth'])->names('admin');
+
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+
 
 Route::resource('/order', orderController::class)->middleware(['auth'])->names('orders');
 
