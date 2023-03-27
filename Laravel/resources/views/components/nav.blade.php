@@ -9,9 +9,10 @@
         $cartProducts = $cart->cartProducts;
         $total = 0;
         foreach ($cartProducts as $cartProduct) {
-            $countObj++;
-            $total += $cartProduct->product->price;
+            $countObj += $cartProduct->quantity;
+            $total += $cartProduct->product->price * $cartProduct->quantity;
         }
+        // dd($cartProducts);
     }
     
 @endphp
@@ -41,6 +42,7 @@
                         <li class="nav-item {{ $user->hasRole('admin') ? '' : 'd-none' }}">
                             <a class="nav-link fs-5" href="{{ route('admin.index') }}">Admin</a>
                         </li>
+
                     @endauth
 
                 </ul>
@@ -49,22 +51,19 @@
                         <div class="cart nav-item">
                             <a class="position-relative" data-bs-toggle="popover" data-bs-trigger="click" title="Cart"
                                 data-bs-content="
-                            <ul class='list-group'>
-                              
+                                <ul class='list-group'>
                                 @foreach ($cartProducts as $product)
-<li class='list-group-item d-flex gap-3'>   
-
+<li class='list-group-item d-flex justify-content-between gap-3'>   
                                         <p> {{ $product->product->title }}</p>
-                                        
                                         <p> {{ '€' . $product->product->price }}</p>
-                                        <a class='removeCartBtn' href='' data-product-id='{{ $product->id }}' data-bs-toggle='tooltip'
-                                            data-bs-title='Remove from Cart'><i class='bi bi-x-lg'></i>
+                                        <p id='quant' class='quant'>Qty: {{ $product->quantity }}</p>
                                         </a>
                                         
                                 </li>
 @endforeach
-                                <li class='list-group-item list-group-item active'>
+                                <li class='list-group-item d-flex gap-2 align-items-center list-group-item active'>
                                     <span><strong>Total: </strong>€{{ $total }}</span>
+                                    <a class='btn btn-sm btn-secondary' href='{{ route('cart.index') }}'>View Cart</a>
                                 </li>
                                 </ul>
                                 ">

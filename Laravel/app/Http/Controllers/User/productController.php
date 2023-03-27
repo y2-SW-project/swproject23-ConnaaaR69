@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\Product;
-use Darryldecode\Cart\Cart;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -27,13 +26,17 @@ class productController extends Controller
         return view('user.products.index')->with('products', $products)->with('user', $user);
     }
 
-    public function show()
+    public function show(Product $product)
     {
+        $user = Auth::user();
+        // dd($product);
+        return view('user.products.show')->with('product', $product)->with('user', $user);
     }
 
     public function create()
     {
-        Auth::user();
+        $u = Auth::user();
+        $u->authorizeRoles('admin');
         return view('admin.products.create');
     }
 
@@ -42,7 +45,7 @@ class productController extends Controller
     {
 
         if (!$request->hasFile('image')) {
-            dd($request);
+            // dd($request);
             return to_route('user.products.create')->with('message', 'No Product Image Provided.');
         }
         $request->validate([

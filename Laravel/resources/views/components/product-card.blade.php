@@ -18,7 +18,7 @@
                 </form>
 
 
-                <a href="{{ route('user.products.edit', '$product') }}">
+                <a href="{{ route('user.products.edit', $product) }}">
                     <button class="btn btn-primary text-dark"><i class="bi bi-pen-fill"></i></button>
                 </a>
 

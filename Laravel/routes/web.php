@@ -22,6 +22,8 @@ use App\Http\Controllers\User\productController;
 Route::resource('/admin', adminController::class)->middleware(['auth'])->names('admin');
 
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+Route::resource('/cart', CartController::class)->middleware(['auth'])->names('cart');
 
 
 Route::resource('/order', orderController::class)->middleware(['auth'])->names('orders');

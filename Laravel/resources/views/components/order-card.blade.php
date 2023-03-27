@@ -2,10 +2,26 @@
 <div class="col-md-8 offset-md-2 my-2">
     <div class="card relative">
         <div class="card-body">
-            <p>{{ $order->id }}</p>
-            <p>{{ $order->user->name }}</p>
-            <p>{{ $order->user->address }}</p>
-            <p>{{ $order->uuid }}</p>
+            <p class="fs-5 lh-0 fw-bold d-flex">
+                Order id:&nbsp;<span class="fw-normal"> {{ $order->id }}</span>
+                </span>
+            </p>
+
+            <p class="fs-5 fw-bold">
+                Order Recipient Name: <span class="fw-normal">{{ $order->user->name }}</span>
+
+            </p>
+            {{-- <p class="fs-5 fw-bold">
+                Order id:
+            </p>
+            <p>{{ $order->user->address }}</p> --}}
+            <p class="fs-5 fw-bold">
+                Order Unique id: &nbsp;<span class="fw-normal">{{ $order->uuid }}</span>
+            </p>
+
+            <p class="fs-5 fw-bold">
+                Order Products:
+            </p>
             @foreach ($order->products as $product)
                 <p>
                     {{ $product->title . ' ' . '€' . $product->price }}

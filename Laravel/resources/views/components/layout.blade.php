@@ -43,10 +43,34 @@
         $('body').on('click', '.addCartBtn', function(event) {
             event.preventDefault();
             var productId = $(this).data('product-id');
-            console.log(productId)
 
             $.ajax({
                 url: "{{ route('cart.add') }}",
+                method: 'POST',
+                data: {
+                    product_id: productId,
+                    _token: "{{ csrf_token() }}",
+                },
+                success: function(response) {
+                    console.log(response.cartProduct.quantity)
+                    document.getElementById('quant').textContent = 'Qty: ' + response
+                        .cartProduct.quantity
+                    // alert('Success, : ' + response.success);
+                },
+                error: function(response) {
+                    alert('Error: ' + response.responseJSON.error);
+                },
+            });
+        });
+
+        //Remove from cart
+        $('body').on('click', '.removeCartBtn', function(event) {
+            event.preventDefault();
+            var productId = $(this).data('product-id');
+            console.log(productId)
+
+            $.ajax({
+                url: "{{ route('cart.remove') }}",
                 method: 'POST',
                 data: {
                     product_id: productId,

@@ -6,12 +6,13 @@
             data-bs-title="Add to Cart"><i class="bi bi-plus-square "></i>
         </a>
     @endauth
-    <a href="" class="text-decoration-none">
+    <a href="{{ route('user.products.show', '$product') }}" class="text-decoration-none">
+
         <img class="card-img-top img-fluid "
             src="{{ $product->image ? asset('images/' . $product->image) : asset('no-image.png') }}" alt="">
 
 
-        <div class="card-body text-dark hover:text-primary">
+        <div class="card-body text-dark">
             <h5 class=" card-title ">{{ $product->title }}</h5>
 
             <p class="card-title"></p>

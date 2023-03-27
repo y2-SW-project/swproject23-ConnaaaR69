@@ -12,7 +12,9 @@
             <a href="#store" class="btn btn-lg btn-primary">
                 Shop Now
             </a>
+
         </div>
+
     </div>
     <div class="container-lg min-vh-100 mt-3" id="store">
         <div class="row">

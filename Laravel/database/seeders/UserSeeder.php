@@ -39,6 +39,7 @@ class UserSeeder extends Seeder
                 $cartProduct = new CartProduct();
                 $cartProduct->cart_id = $cart->id;
                 $cartProduct->product_id = $product->id;
+                $cartProduct->quantity = rand(1, 3);
                 $cartProduct->save();
             }
         });

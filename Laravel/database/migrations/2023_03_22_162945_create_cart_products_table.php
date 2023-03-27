@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('cart_id')->unsigned();
             $table->bigInteger('product_id')->unsigned();
+            $table->integer('quantity');
             $table->timestamps();
 
             $table->foreign('cart_id')->references('id')->on('cart')->onUpdate('cascade')->onDelete('restrict');
