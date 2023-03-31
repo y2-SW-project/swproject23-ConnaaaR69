@@ -1,18 +1,14 @@
 @php
     if (Auth::check()) {
-        $countObj = 0;
         $user = Auth::user();
-        $cart = $user
-            ->cart()
-            ->with('cartProducts')
-            ->first();
-        $cartProducts = $cart->cartProducts;
         $total = 0;
+        $countObj = 0;
+        $cart = $user->cart;
+        $cartProducts = $cart->cartProducts;
         foreach ($cartProducts as $cartProduct) {
             $countObj += $cartProduct->quantity;
             $total += $cartProduct->product->price * $cartProduct->quantity;
         }
-        // dd($cartProducts);
     }
     
 @endphp

@@ -32,7 +32,7 @@
                     @csrf
                     @method('Delete')
                     <button class="btn btn-dark text-light"
-                        onclick="return confirm('Are you sure you want to delete this project?')"><i
+                        onclick="return confirm('Are you sure you want to delete this order?')"><i
                             class="bi bi-trash-fill"></i></button>
                 </form>
                 <a href="{{ route('orders.edit', $order) }}">

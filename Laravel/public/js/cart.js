@@ -31,7 +31,7 @@ $(document).ready(function() {
         });
     });
 
-    $('body').on('click', '.removeCartBtn', function(event) {
+    $('body').on('click', '.cartDelete', function(event) {
         event.preventDefault();
         var productId = $(this).data('product-id');
         console.log(productId)
@@ -47,7 +47,8 @@ $(document).ready(function() {
                 console.log(response)
                 // alert('Success, : ' + response.success);
                 // Will use the following line to update cart counter when implemented
-                // $('#cart-count').text(response.cart_count);
+                $('#cart-count').text(response.cart_count);
+               
             },
             error: function(response) {
                 alert('Error: ' + response.responseJSON.error);

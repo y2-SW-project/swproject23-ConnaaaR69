@@ -8,7 +8,7 @@
             <div class="col-md-8 offset-md-2 d-flex justify-items-center">
 
 
-                <h1>Your Cart <span class="fs-3">({{ count($cart) }} Items)</span></h1>
+                <h1>Your Cart <span class="fs-3">({{ count($cart) }} Products)</span></h1>
             </div>
             <div class="row">
                 <div class="col-md-10 offset-md-1 d-flex justify-items-center">
@@ -28,9 +28,11 @@
                                 <tr>
                                     <td>{{ $product->product->title }}</td>
                                     <td>{{ $product->product->text }}</td>
-                                    <td class="text-center">{{ $product->quantity }}</td>
+                                    <td class="text-center quant">{{ $product->quantity }}</td>
                                     <td>€{{ $product->product->price }}</td>
-                                    <td><button href="{{ route('user.products.index') }}" class="btn-close"></button>
+                                    <td>
+                                        <a data-product-id="{{ $product->id }}" class="cartDelete"><i
+                                                class="bi bi-x-lg text-dark"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

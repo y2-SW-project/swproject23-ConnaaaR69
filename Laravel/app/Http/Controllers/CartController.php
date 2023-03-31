@@ -7,13 +7,26 @@ use App\Models\Product;
 use App\Models\CartProduct;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class CartController extends Controller
 {
     public function index()
     {
+        $user = Auth::user();
+        $cart = $user->cart->with('cartProducts')->first();
+        $products = $cart->cartProducts;
+
+
+        return view('cart.index')->with('cart', $products);
+    }
+
+    public function show()
+    {
+        //idk, my js needs this
         $user = Auth::user();
         $cart = $user->cart->with('cartProducts')->first();
         $products = $cart->cartProducts;
@@ -44,6 +57,8 @@ class CartController extends Controller
 
         $cartProduct = CartProduct::where('product_id', '=',  $product->id)->where('cart_id', '=', $user->cart->id)->get()->first();
 
+
+
         if (CartProduct::where('product_id', '=', $product->id)->where('cart_id', '=', $user->cart->id)->exists()) {
 
             $cartProduct->quantity =  $cartProduct->quantity + 1;
@@ -56,7 +71,18 @@ class CartController extends Controller
                 'product_id' => $product->id,
                 'quantity' => 1,
             ]);
-            return response()->json(['success' => 'Product added to cart', 'cartProduct' => $cartProduct]);
+
+            if (Auth::check()) {
+                $countObj = 0;
+                $allProds = $cart->cartProducts;
+                $total = 0;
+                foreach ($allProds as $cartProduct) {
+                    $countObj += $cartProduct->quantity;
+                    $total += $cartProduct->product->price * $cartProduct->quantity;
+                }
+                // dd($cartProducts);
+            }
+            return response()->json(['success' => 'Product added to cart', 'cartProduct' => $cartProduct, 'countObj' => $countObj]);
         };
 
         return response()->json(['error' => 'Unable to add product to cart'], 500);
@@ -68,26 +94,35 @@ class CartController extends Controller
 
     public function remove(Request $request)
     {
+
+
         $user = Auth::user();
         $cart = $user->cart->with('cartProducts')->first();
+        // dd($user->cart);
         //this shouldn't be needed as every user has a cart, but just incase...
         if (!$cart) {
-            return response()->json(['error' => 'No cart exists'], 500);
+            $cart = Cart::create([
+                'user_id' => $user->id,
+            ]);
         }
 
         //get product from product id
-        $product = Product::find($request->input('product_id'));
-        dd($request->input('product_id'));
+        $product = $request->input('product_id');
+
         if (!$product) {
             return response()->json(['error' => 'Product not found'], 404);
         }
-        $cartProduct = CartProduct::where('product_id', '=',  $product->id)->where('cart_id', '=', $user->cart->id)->get()->first();
+        $cartProduct = CartProduct::where('id', '=',  $product)->where('cart_id', '=', $user->cart->id)->get()->first();
 
-        if (CartProduct::where('product_id', '=', $product->id)->where('cart_id', '=', $user->cart->id)->exists()) {
-
-            $cartProduct->quantity =  $cartProduct->quantity + 1;
-            $cartProduct->delete();
-            return response()->json(['success' => 'Product removed from cart', 'cartProduct' => $cartProduct]);
+        if ($cartProduct->exists()) {
+            if ($cartProduct->quantity > 1) {
+                $cartProduct->quantity =  $cartProduct->quantity - 1;
+                $cartProduct->save();
+                return response()->json(['success' => 'product removed from cart', 'cartProduct' => $cartProduct]);
+            } else {
+                $cartProduct->delete();
+                return response()->json(['success' => 'Product removed from cart']);
+            }
         }
         return response()->json(['error' => 'Product Not Found!']);
     }

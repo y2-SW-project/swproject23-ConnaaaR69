@@ -64,7 +64,7 @@
         });
 
         //Remove from cart
-        $('body').on('click', '.removeCartBtn', function(event) {
+        $('body').on('click', '.cartDelete', function(event) {
             event.preventDefault();
             var productId = $(this).data('product-id');
             console.log(productId)
@@ -80,7 +80,9 @@
                     console.log(response)
                     // alert('Success, : ' + response.success);
                     // Will use the following line to update cart counter when implemented
-                    // $('#cart-count').text(response.cart_count);
+                    // $('#cart-count').text(response.cartProduct);
+                    $('.cartCounter').text(response.countObj)
+                    $('.quant').text(response.cartProduct.quantity)
                 },
                 error: function(response) {
                     alert('Error: ' + response.responseJSON.error);
