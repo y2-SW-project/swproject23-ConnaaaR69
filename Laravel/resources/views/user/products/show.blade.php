@@ -6,7 +6,7 @@
                     src="{{ $product->image ? asset('images/' . $product->image) : asset('no-image.png') }}"
                     alt="">
             </div>
-            {{ ddd($product) }}
+
             <div class="col-md-6 d-flex flex-column">
                 <h2>
                     {{ $product->title }}

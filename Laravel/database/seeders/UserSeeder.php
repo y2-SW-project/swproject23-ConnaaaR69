@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
         Cart::factory()->create(['user_id' => $admin->id]);
 
         // Create generic users
-        User::factory()->times(10)->hasOrders(2)->create()->each(function ($user) {
+        User::factory()->times(10)->create()->each(function ($user) {
             $cart = Cart::factory()->create(['user_id' => $user->id]);
             $products = Product::inRandomOrder()->take(rand(1, 5))->get();
 

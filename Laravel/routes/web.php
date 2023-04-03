@@ -7,6 +7,7 @@ use App\Http\Controllers\adminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\orderController;
 use App\Http\Controllers\User\productController;
+use App\Http\Controllers\userController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,15 @@ use App\Http\Controllers\User\productController;
 
 Route::resource('/admin', adminController::class)->middleware(['auth'])->names('admin');
 
+Route::get('/user/profile', [userController::class, 'profile'])->middleware(['auth'])->name('user.profile');
+
+Route::get('/user/orders', [userController::class, 'orders'])->middleware(['auth'])->name('user.orders');
+// Route::resource('/admin/user/remove', userController::class)->names('admin.user');
+
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
 Route::resource('/cart', CartController::class)->middleware(['auth'])->names('cart');
+Route::post('/checkout', [CartController::class, 'convertToOrder'])->name('order.finalise');
 
 
 Route::resource('/order', orderController::class)->middleware(['auth'])->names('orders');

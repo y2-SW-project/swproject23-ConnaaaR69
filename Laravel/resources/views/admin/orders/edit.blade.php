@@ -8,7 +8,7 @@
         </div>
         <div class="row align-content-center">
             <div class="col-md-8 offset-md-2">
-                <h1>Manually Create a New Order</h1>
+                <h1>Edit an Existing Order</h1>
 
                 <form method="POST" action="{{ route('orders.update', $order) }}" enctype="multipart/form-data">
                     @csrf
@@ -24,7 +24,8 @@
                             @endforeach
                         </select>
                     @endif
-
+                    @foreach ($products as $product)
+                    @endforeach
                     <button class="btn btn-primary mt-3">Submit</button>
                 </form>
             </div>

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\CartProduct;
-use Illuminate\Http\Request;
 
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -33,6 +35,41 @@ class CartController extends Controller
 
 
         return view('cart.index')->with('cart', $products);
+    }
+
+    public function convertToOrder()
+    {
+        $user = Auth::user();
+        $cart = $user->cart->with('cartProducts')->first();
+        $cartProducts = $cart->cartProducts;
+
+        $order = Order::create([
+            'user_id' => $user->id,
+            'uuid' => Str::uuid(),
+            'created_at' => now()
+
+        ]);
+
+        // $order->convertFromCart($cartProducts);
+        // $cart->emptyCart($cartProducts);
+        if (empty($cartProducts)) {
+            return Redirect::back()->with('msg', 'Nothing to order');
+        } else {
+            foreach ($cartProducts as $cartProduct) {
+                $order->products()->attach($cartProduct->product);
+                $cartProduct->delete();
+            }
+            return Redirect::back()->with('msg', 'Order successfully placed!');
+        }
+
+
+
+
+        // foreach ($cartProducts as $cartProduct) {
+        //     $order->attach($cartProduct->product->id);
+
+        // }
+
     }
 
     public function add(Request $request)

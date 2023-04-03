@@ -15,18 +15,19 @@ class adminController extends Controller
         $u = Auth::user();
         $u->authorizeRoles('admin');
 
-
+        $users = User::all();
+        // dd($users->makeHidden(['password', 'email']));
 
         $cart = $u->cart()->with('cartProducts')->first();
         $cartProducts = $cart->cartProducts;
-        foreach ($cartProducts as $cartProduct) {
-            $product = $cartProduct->product;
-            // echo $product->title;
-        }
+        // foreach ($cartProducts as $cartProduct) {
+        //     $product = $cartProduct->product;
+        //     // echo $product->title;
+        // }
 
         $products = Product::orderBy('updated_at', 'DESC')->get();
         $orders = Order::orderBy('created_at', 'DESC')->get();
         // dd($orders);
-        return view('admin.index')->with('products', $products)->with('orders', $orders)->with('user', $u);
+        return view('admin.index')->with('products', $products)->with('orders', $orders)->with('user', $u)->with('users', $users);
     }
 }

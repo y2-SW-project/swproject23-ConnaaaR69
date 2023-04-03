@@ -70,6 +70,10 @@ $list-group-active-bg: $primary;
 $list-group-active-color: $dark;
 $list-group-active-border-color: $dark;
 
+// Component
+$dropdown-link-active-bg: $primary;
+$dropdown-link-hover-bg: $secondary;
+
 // my Classes
 h3 {
     padding-top: 0.5rem;
@@ -162,7 +166,6 @@ $theme-colors: map-merge($theme-colors, $cust-colors);
 $theme-colors: map-remove(
     $theme-colors,
     "secondary-light",
-    "danger",
     "success",
     "info",
     "warning"

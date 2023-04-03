@@ -16,6 +16,13 @@ class Cart extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function emptyCart($cartProducts)
+    {
+        foreach ($cartProducts as $cartProduct) {
+            $this->detach($cartProduct);
+        }
+    }
+
     public function cartProducts()
     {
         return $this->hasMany(CartProduct::class);

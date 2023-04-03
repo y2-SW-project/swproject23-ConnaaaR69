@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Error;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,6 +20,29 @@ class Order extends Model
     public function products()
     {
         return $this->belongsToMany(Product::class);
+    }
+
+    public function hasProduct($id)
+    {
+        $products = $this->products->all();
+
+
+        foreach ($products as $product) {
+
+            if ($product->id == $id) {
+
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    public function convertFromCart($cartProducts)
+    {
+        foreach ($cartProducts as $cartProduct) {
+            $this->attach($cartProduct);
+        }
     }
 
     public function addProduct(Product $product)

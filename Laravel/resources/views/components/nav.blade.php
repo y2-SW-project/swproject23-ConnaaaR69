@@ -5,6 +5,7 @@
         $countObj = 0;
         $cart = $user->cart;
         $cartProducts = $cart->cartProducts;
+    
         foreach ($cartProducts as $cartProduct) {
             $countObj += $cartProduct->quantity;
             $total += $cartProduct->product->price * $cartProduct->quantity;
@@ -44,6 +45,18 @@
                 </ul>
                 <div class="d-flex gap-5">
                     @auth
+                        <div class="nav-item">
+                            <div class="dropdown">
+                                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="bi bi-person-circle" style="font-size: 1rem;"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('user.orders') }}">Orders</a></li>
+                                </ul>
+                            </div>
+                        </div>
                         <div class="cart nav-item">
                             <a class="position-relative" data-bs-toggle="popover" data-bs-trigger="click" title="Cart"
                                 data-bs-content="

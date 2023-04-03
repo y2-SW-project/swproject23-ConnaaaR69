@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="container">
+    <div class="container py-5">
         <div class="row">
             <div class="col-md-1">
                 <a href="{{ URL::previous() }}" class="btn btn-dark d-flex justify-content-center gap-2 px-5 my-3"><i
@@ -38,8 +38,22 @@
                             @endforeach
                         </tbody>
                     </table>
+
+                </div>
+
+
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-md-3 py-5">
+                    <form class="absolute left-50" action="{{ route('order.finalise') }}" method="POST">
+                        @csrf
+                        <button class="btn btn-primary"> Proceed To Checkout<i class="bi bi-arrow-right "></i></button>
+
+                    </form>
                 </div>
             </div>
+
+
         </div>
     </div>
 </x-layout>
