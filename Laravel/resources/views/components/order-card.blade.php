@@ -40,11 +40,25 @@
             <p class="fs-5 fw-bold">
                 Order Products:
             </p>
-            @foreach ($order->products as $product)
-                <p>
-                    {{ $product->title . ' ' . '€' . $product->price }}
-                </p>
-            @endforeach
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col" class="text-center">Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($order->products as $product)
+                        <tr>
+                            <td>{{ $product->title }}</td>
+                            <td>€ {{ $product->price }}</td>
+                            <td class="text-center">{{ $product->pivot->quantity }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
             <div class="d-flex gap-1">
                 @if (request()->routeIs('admin.index'))
                     <form class="absolute left-50" action="{{ route('orders.destroy', $order) }}" method="POST">

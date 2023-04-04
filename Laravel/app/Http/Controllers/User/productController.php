@@ -129,8 +129,6 @@ class productController extends Controller
     {
         $query = $_GET['query'];
         $products = Product::where('title', 'LIKE', '%' . $query . '%');
-
-
         return view('user.products.index')->with('products', $products);
     }
 }

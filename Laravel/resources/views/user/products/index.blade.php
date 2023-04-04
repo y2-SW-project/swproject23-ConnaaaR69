@@ -39,7 +39,10 @@
             {{-- {{ dd($products) }} --}}
             <div class="row">
                 <div class="col-md-12 .d-flex justify-content-between">
-                    {{ $products->fragment('store')->links() }}
+                    @if (Route::is('user.products.store'))
+                        {{ $products->fragment('store')->links() }}
+                    @endif
+
                 </div>
             </div>
         @endif

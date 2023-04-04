@@ -19,7 +19,7 @@ class Order extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(Product::class)->withPivot('quantity');
     }
 
     public function hasProduct($id)
@@ -28,13 +28,9 @@ class Order extends Model
 
 
         foreach ($products as $product) {
-
             if ($product->id == $id) {
-
                 return true;
-            } else {
-                return false;
-            }
+            } else false;
         }
     }
 

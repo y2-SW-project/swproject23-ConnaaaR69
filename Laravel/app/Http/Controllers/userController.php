@@ -22,7 +22,9 @@ class userController extends Controller
     public function orders(User $user)
     {
         $user = Auth::user();
-        $orders = Order::where('user_id', '=', $user->id)->orderBy('created_at', 'DESC')->get();
+        $orders = Order::where('user_id', '=', $user->id)->orderBy('created_at', 'DESC')->with('products')->get();
+
+
         return view('user.user-orders')->with('orders', $orders);
     }
 

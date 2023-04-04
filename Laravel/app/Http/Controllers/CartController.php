@@ -56,7 +56,7 @@ class CartController extends Controller
             return Redirect::back()->with('msg', 'Nothing to order');
         } else {
             foreach ($cartProducts as $cartProduct) {
-                $order->products()->attach($cartProduct->product);
+                $order->products()->attach($cartProduct->product, ['quantity' => $cartProduct->quantity]);
                 $cartProduct->delete();
             }
             return Redirect::back()->with('msg', 'Order successfully placed!');

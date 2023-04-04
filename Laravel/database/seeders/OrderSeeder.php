@@ -30,7 +30,9 @@ class OrderSeeder extends Seeder
 
                 // Create an order with the products attached to it
                 $order = Order::factory()->create(['user_id' => $user->id]);
-                $order->products()->attach($products);
+                foreach ($products as $product) {
+                    $order->products()->attach($product, ['quantity' => rand(1, 5)]);
+                }
             }
         }
     }
