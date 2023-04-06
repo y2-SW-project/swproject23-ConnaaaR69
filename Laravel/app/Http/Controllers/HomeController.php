@@ -27,4 +27,9 @@ class HomeController extends Controller
         // dd();
         return view('static.index');
     }
+    public function contact()
+    {
+        // dd();
+        return view('static.contact');
+    }
 }

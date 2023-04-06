@@ -3,7 +3,7 @@
     {{-- {{ route('user.products.show', $product) }} --}}
     @Auth
         <a class="addCartBtn rounded-circle .d-none .d-md-block" data-product-id="{{ $product->id }}" data-bs-toggle="tooltip"
-            data-bs-title="Add to Cart"><i class="bi bi-plus-square "></i>
+            data-bs-title="Add to Cart"><i id='atcb' class="bi bi-plus-square "></i>
         </a>
     @endauth
     <a href="{{ route('user.products.show', '$product') }}" class="text-decoration-none">

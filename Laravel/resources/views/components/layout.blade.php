@@ -55,8 +55,10 @@
                 },
                 success: function(response) {
                     console.log(response.cartProduct.quantity)
-                    document.getElementById('quant').textContent = 'Qty: ' + response
-                        .cartProduct.quantity
+                    document.getElementById('quant').textContent = 'Qty: ' + response.cartProduct.quantity
+                    document.getElementById('cartCounter').textContent = response.countObj;
+
+
                     // alert('Success, : ' + response.success);
                 },
                 error: function(response) {

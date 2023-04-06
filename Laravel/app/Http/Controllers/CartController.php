@@ -119,6 +119,7 @@ class CartController extends Controller
                 }
                 // dd($cartProducts);
             }
+
             return response()->json(['success' => 'Product added to cart', 'cartProduct' => $cartProduct, 'countObj' => $countObj]);
         };
 

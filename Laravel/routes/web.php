@@ -37,6 +37,7 @@ Route::resource('/order', orderController::class)->middleware(['auth'])->names('
 
 Route::resource('/store', productController::class)->names('user.products');
 Route::get('/', [HomeController::class, 'index'])->name('static.index');
+Route::get('/contact', [HomeController::class, 'contact'])->name('static.contact');
 Route::get('/search', [productController::class, 'search'])->name('user.products.search');
 
 Auth::routes();

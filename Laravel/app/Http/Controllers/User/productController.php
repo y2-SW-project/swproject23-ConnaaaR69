@@ -128,7 +128,7 @@ class productController extends Controller
     public function search()
     {
         $query = $_GET['query'];
-        $products = Product::where('title', 'LIKE', '%' . $query . '%');
+        $products = Product::where('title', 'LIKE', '%' . $query . '%')->get();
         return view('user.products.index')->with('products', $products);
     }
 }

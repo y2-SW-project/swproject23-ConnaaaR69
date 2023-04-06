@@ -51,13 +51,16 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item">
-                            <img src="/images/home/stone.jpg" class="d-block w-100" alt="beers on gravel" />
+                            <img src="{{ asset('/images/home/stone.jpg') }}" class="d-block w-100"
+                                alt="beers on gravel" />
                         </div>
                         <div class="carousel-item active">
-                            <img src="/images/home/table.jpg" class="d-block w-100" alt="ale on a table" />
+                            <img src="{{ asset('/images/home/table.jpg') }}" class="d-block w-100"
+                                alt="ale on a table" />
                         </div>
                         <div class="carousel-item">
-                            <img src="/images/home/grass.jpg" class="d-block w-100" alt="beers on grass" />
+                            <img src="{{ asset('/images/home/grass.jpg') }}" class="d-block w-100"
+                                alt="beers on grass" />
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -78,7 +81,7 @@
         <div class="container-md">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="/images/home/bottles.jpg" class="img-fluid rounded mb-4" />
+                    <img src="{{ asset('/images/home/bottles.jpg') }}" class="img-fluid rounded mb-4" />
                 </div>
                 <div class="col-md-6 text-light">
                     <h3>What Is Craft Beer?</h3>
@@ -138,7 +141,7 @@
                 </p>
             </div>
             <div class="col-md-6">
-                <img src="/images/home/brewery.jpg" alt=" field with trees" class="img-fluid rounded" />
+                <img src="{{ asset('/images/home/brewery.jpg') }}" alt=" field with trees" class="img-fluid rounded" />
             </div>
         </div>
     </div>
@@ -151,10 +154,12 @@
             </div>
             <div class="row py-5">
                 <div class="col-md-6 d-flex justify-content-center">
-                    <img src="/images/home/associate/table41.jpg" alt="table fourty one" class="img-fluid" />
+                    <img src="{{ asset('/images/home/associate/table41.jpg') }}" alt="table fourty one"
+                        class="img-fluid" />
                 </div>
                 <div class="col-md-6 d-flex justify-content-center">
-                    <img src="/images/home/associate/thekitchen.png" alt="the kitchen" class="img-fluid" />
+                    <img src="{{ asset('/images/home/associate/thekitchen.png') }}" alt="the kitchen"
+                        class="img-fluid" />
                 </div>
             </div>
         </div>

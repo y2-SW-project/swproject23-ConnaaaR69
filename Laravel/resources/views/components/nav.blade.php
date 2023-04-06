@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse navbar-nav" id="navbarTogglerDemo03">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link fs-5" aria-current="page" href="contact.html">Contact</a>
+                        <a class="nav-link fs-5" aria-current="page" href="{{ route('static.contact') }}">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link  fs-5" href="{{ route('user.products.index') }}">Shop</a>
@@ -67,7 +67,6 @@
                                         <p> {{ '€' . $product->product->price }}</p>
                                         <p id='quant' class='quant'>Qty: {{ $product->quantity }}</p>
                                         </a>
-                                        
                                 </li>
 @endforeach
                                 <li class='list-group-item d-flex gap-2 align-items-center list-group-item active'>
@@ -79,9 +78,9 @@
 
 
                                 <i class="bi bi-basket2-fill text-light fs-2"></i>
-                                <span class=" badge rounded-pill cartCounter text-dark">
+                                <p id='cartCounter' class=" badge rounded-pill cartCounter text-dark">
                                     {{ $countObj }}
-                                </span>
+                                </p>
                             </a>
 
                         </div>

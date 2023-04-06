@@ -21,6 +21,9 @@ $(document).ready(function() {
             success: function(response) {
                 console.log(response)
                 let quantityUpdater = document.getElementsByClassName('.quant').innerHTML(response.cartProduct.quantity)
+                let button = document.getElementsById('atcb')
+                button.classList.remove('bi-plus-square');
+                button.classList.add('bi-check-square');
                 // alert('Success, : ' + response.success);
                 // Will use the following line to update cart counter when implemented
                 // $('#cart-count').text(response.cart_count);
