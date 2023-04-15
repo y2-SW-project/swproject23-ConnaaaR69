@@ -73,7 +73,7 @@ class orderController extends Controller
     public function destroy(Order $order)
     {
         $u = Auth::user();
-        $u->authorizeRoles('admin');
+
 
         $order->delete();
         return Redirect::back()->with('msg', 'Order Successfully Deleted');

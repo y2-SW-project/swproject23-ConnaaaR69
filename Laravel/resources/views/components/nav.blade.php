@@ -4,6 +4,7 @@
         $total = 0;
         $countObj = 0;
         $cart = $user->cart;
+    
         $cartProducts = $cart->cartProducts;
     
         foreach ($cartProducts as $cartProduct) {

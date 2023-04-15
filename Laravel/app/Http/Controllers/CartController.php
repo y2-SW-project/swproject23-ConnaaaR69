@@ -19,8 +19,8 @@ class CartController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $cart = $user->cart->with('cartProducts')->first();
-        $products = $cart->cartProducts;
+
+        $products = $user->cart->cartProducts;
 
 
         return view('cart.index')->with('cart', $products);
@@ -40,8 +40,8 @@ class CartController extends Controller
     public function convertToOrder()
     {
         $user = Auth::user();
-        $cart = $user->cart->with('cartProducts')->first();
-        $cartProducts = $cart->cartProducts;
+        $cartProducts = $user->cart->cartProducts;
+
 
         $order = Order::create([
             'user_id' => $user->id,

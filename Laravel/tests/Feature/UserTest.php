@@ -21,7 +21,7 @@ class UserTest extends TestCase
 
     public function test_user_has_cart()
     {
-        $this->withoutEvents();
+
         $user =  User::factory(User::class)->create();
         $cart = Cart::factory(Cart::class)->create(['user_id' => $user->id]);
 
@@ -30,7 +30,7 @@ class UserTest extends TestCase
 
     public function test_user_can_be_seeded()
     {
-        $this->withoutEvents();
+
         $user =  User::factory(User::class)->create();
         $cart = Cart::factory(Cart::class)->create(['user_id' => $user->id]);
 
