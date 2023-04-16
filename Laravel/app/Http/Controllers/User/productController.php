@@ -12,25 +12,21 @@ use Illuminate\Support\Facades\Redirect;
 
 class productController extends Controller
 {
-
-
-
     // -- Pages -- //
     public function index()
     {
         $user = Auth::user();
-        // $cart = $user->cart()->with('cartProducts')->first();
-        // $cartProducts = $cart->cartProducts;
-        // dd($cartProducts);
         $products = Product::orderBy('price', 'DESC')->simplePaginate(6);
         return view('user.products.index')->with('products', $products)->with('user', $user);
     }
 
-    public function show(Product $product)
+    public function show($product)
     {
+
         $user = Auth::user();
-        // dd($product);
-        return view('user.products.show')->with('product', $product)->with('user', $user);
+        $product = Product::where('uuid', '=', $product)->first();
+
+        return view('user.products.show')->with('product', $product);
     }
 
     public function create()

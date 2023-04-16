@@ -78,9 +78,6 @@
                     <form class="absolute left-50" action="{{ route('orders.destroy', $order) }}" method="POST">
                         @csrf
                         @method('Delete')
-
-
-
                         @if ($order->created_at->diffInHours(now()) < 1)
                             <button class="btn btn-danger text-light"
                                 onclick="return confirm('Are you sure you want to cancel this order?')"><i

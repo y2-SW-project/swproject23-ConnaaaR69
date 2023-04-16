@@ -36,7 +36,7 @@
         </div>
 
         @if (route('user.products.store'))
-            {{-- {{ dd($products) }} --}}
+
             <div class="row">
                 <div class="col-md-12 .d-flex justify-content-between">
                     @if (Route::is('user.products.store'))
@@ -52,7 +52,7 @@
 
 
 
-        {{-- @unless(count($products) == 0) --}}
+        {{-- @unless (count($products) == 0) --}}
 
         {{-- @else
             <p>No Products</p>

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use DB;
-use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
@@ -24,19 +22,15 @@ class userController extends Controller
         $user = Auth::user();
         $orders = Order::where('user_id', '=', $user->id)->orderBy('created_at', 'DESC')->with('products')->get();
 
-
         return view('user.user-orders')->with('orders', $orders);
     }
 
     public function destroy(User $user)
     {
-        dd($user);
-        // dd($user->id);
         $u = Auth::user();
         $u->authorizeRoles('admin');
 
         $user->delete();
-
         return Redirect::back()->with('msg', 'Order Successfully Deleted');
     }
 }

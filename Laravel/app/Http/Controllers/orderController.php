@@ -23,7 +23,6 @@ class orderController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
         $request->validate([
             'user_id' => 'required',
         ]);
