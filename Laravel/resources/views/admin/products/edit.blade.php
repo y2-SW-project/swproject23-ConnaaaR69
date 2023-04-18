@@ -4,7 +4,8 @@
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <h1>Edit an Existing Product</h1>
-                <form method="POST" action="{{ route('user.products.store', $product) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('user.products.update', $product->id) }}"
+                    enctype="multipart/form-data">
 
                     @method('put')
                     @csrf

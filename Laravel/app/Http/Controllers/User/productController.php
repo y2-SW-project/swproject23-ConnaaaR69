@@ -69,21 +69,23 @@ class productController extends Controller
     }
 
 
-    public function edit(Product $product)
+    public function edit($product)
     {
 
         $u = Auth::user();
         $u->authorizeRoles('admin');
-
+        $product = Product::where('uuid', '=', $product)->first();
 
         return view('admin.products.edit')->with('product', $product);
     }
 
-    public function update(Product $product, Request $req)
+    public function update($product, Request $req)
     {
+        $product = Product::where('id', '=', $product)->first();
+
 
         $user = Auth::user();
-        $user->authorizeRoles('admin');
+        // $user->authorizeRoles('admin');
 
         if (!$req->hasFile('image')) {
 
@@ -109,7 +111,9 @@ class productController extends Controller
             'price' => $req->price
         ]);
 
-        return Redirect::back()->with('msg', 'Product Successfully Updated');
+
+
+        return to_route('admin.index')->with('msg', 'Product Successfully Updated');
     }
 
     public function destroy(Product $product)
