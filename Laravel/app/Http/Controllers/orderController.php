@@ -43,7 +43,7 @@ class orderController extends Controller
 
         if ($u->id === $order->user_id) {
             if ($u->hasRole('admin')) {
-                $u->authorizeRole('admin');
+                $u->authorizeRoles('admin');
                 $users = User::all()->except($u->id);
                 return view('admin.orders.edit')->with('order', $order)->with('users', $users)->with('products', $products);
             } else {
