@@ -39,19 +39,10 @@ class orderController extends Controller
     {
         $u = Auth::user();
         $products = Product::all();
-        // $u->authorizeRoles('admin');
+        $u->authorizeRoles('admin');
 
-        if ($u->id === $order->user_id) {
-            if ($u->hasRole('admin')) {
-                $u->authorizeRoles('admin');
-                $users = User::all()->except($u->id);
-                return view('admin.orders.edit')->with('order', $order)->with('users', $users)->with('products', $products);
-            } else {
-                return view('admin.orders.edit')->with('order', $order)->with('products', $products);
-            }
-        } else {
-            return response('Unauthorized Access Error', 401);
-        }
+        $users = User::all()->except($u->id);
+        return view('admin.orders.edit')->with('order', $order)->with('users', $users)->with('products', $products);
     }
 
     public function update(Order $order, Request $req)
