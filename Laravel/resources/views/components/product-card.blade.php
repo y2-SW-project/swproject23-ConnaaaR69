@@ -9,7 +9,8 @@
             <p>{{ $product->uuid }}</p>
 
             <div class="d-flex gap-1">
-                <form class="absolute left-50" action="{{ route('user.products.destroy', $product) }}" method="POST">
+                <form class="absolute left-50" action="{{ route('user.products.destroy', $product->id) }}" method="POST">
+
                     @csrf
                     @method('Delete')
                     <button class="btn btn-dark text-light"

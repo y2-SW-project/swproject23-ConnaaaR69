@@ -116,8 +116,11 @@ class productController extends Controller
         return to_route('admin.index')->with('msg', 'Product Successfully Updated');
     }
 
-    public function destroy(Product $product)
+    public function destroy($product)
     {
+        $product = Product::where('id', '=', $product)->first();
+
+        // dd($product);
         $u = Auth::user();
         $u->authorizeRoles('admin');
         // dd($product);
